@@ -48,7 +48,7 @@ router.param('comment', function (req, res, next, id) {
 
     if (!comment) {return next(new Error("Can't find comment"));}
 
-    req.post = post;
+    req.comment = comment;
     return next();
   });
 });
@@ -67,7 +67,7 @@ router.put('/posts/:post/upvote', function(req, res, next) {
   });
 });
 
-router.put('/posts/:post/comments:comment/upvote', function(req, res, next) {
+router.put('/posts/:post/comments/:comment/upvote', function(req, res, next) {
   req.comment.upvote(function (err, comment) {
     if (err) {return next(err);}
 
